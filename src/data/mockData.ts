@@ -12,5 +12,12 @@ export const mockConversationItems: ConversationListItem[] = [
 
 // Details containing basic data and extended one to show in the main area
 export const mockConversationDetails: ConversationDetails[] = [
-  { ...mockConversationItems[0], category: 'Finances', messages: [] }
+  {
+    ...mockConversationItems[0],
+    category: 'Finances',
+    messages: [
+      { id: 'm1', sender: 'Customer', content: 'Where is my order?', timestamp: Date.now() },
+      { id: 'm2', sender: 'Customer', content: 'It is on the way.', timestamp: Date.now() }
+    ]
+  }
 ];

@@ -16,6 +16,6 @@ export interface ConversationListItem {
 }
 
 export interface ConversationDetails extends ConversationListItem {
-  messages: any[];
+  messages: ConversationMessage[];
   category: string;
 }
