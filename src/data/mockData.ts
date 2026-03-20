@@ -9,7 +9,10 @@ export const mockConversationItems: Conversation[] = [
     category: 'Finances',
     messages: [
       { id: 'm1', sender: 'Customer', content: 'Where is my order?', timestamp: Date.now() },
-      { id: 'm2', sender: 'AI', content: 'It is on the way.', timestamp: Date.now() }
+      { id: 'm2', sender: 'AI', content: 'It is on the way.', timestamp: Date.now() },
+      { id: 'm3', sender: 'AI', content: 'It is on the way.', timestamp: Date.now() },
+      { id: 'm4', sender: 'AI', content: 'It is on the way.', timestamp: Date.now() },
+      { id: 'm5', sender: 'AI', content: 'It is on the way.', timestamp: Date.now() }
     ],
     notes: [
       {
