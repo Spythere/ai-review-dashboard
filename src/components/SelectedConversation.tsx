@@ -19,11 +19,15 @@ export function SelectedConversation({ conversation, onReviewStatusChange }: Pro
 
   useEffect(() => {
     fetchConversationDetails();
+    console.log(conversation.id);
   }, [conversation.id]);
 
   // Mock fetching conversation details from API
   function fetchConversationDetails() {
     setDetailsLoading(true);
+    setConversationDetails(null);
+    setDetailsError(null);
+
     setTimeout(
       () => {
         try {
