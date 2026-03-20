@@ -81,7 +81,11 @@ function App() {
         <Container sx={{ mt: 2, flexGrow: 1 }} maxWidth="xl">
           <Grid container spacing={2}>
             <Grid size={4}>
-              <Sidebar conversationList={conversationList} onSelect={setSelectedConversation} />
+              <Sidebar
+                conversationList={conversationList}
+                onSelect={setSelectedConversation}
+                selectedItemId={selectedConversation?.id || null}
+              />
             </Grid>
 
             <Grid size={8}>

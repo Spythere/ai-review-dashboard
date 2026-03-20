@@ -1,26 +1,35 @@
-import { Box, Typography, List, ListItem, ListItemText, colors, Divider } from '@mui/material';
+import { Box, Typography, List, ListItem, ListItemText, colors, Divider, ListItemButton, Paper } from '@mui/material';
 import type { Conversation } from '../types';
+import { ReviewStatusChip } from './ReviewStatusChip';
 
 interface Props {
   conversationList: Conversation[];
   onSelect: (item: Conversation) => void;
+  selectedItemId: string | null;
 }
 
-export default function Sidebar({ conversationList, onSelect }: Props) {
+export default function Sidebar({ conversationList, onSelect, selectedItemId }: Props) {
   return (
-    <Box p={2} bgcolor={colors.grey[900]}>
-      <Typography variant="h6">Conversations</Typography>
+    <Paper elevation={3}>
+      <Typography variant="h6" p={2}>
+        Conversations
+      </Typography>
       <Divider />
       <List>
         {conversationList.map((c) => (
-          <ListItem key={c.id} onClick={() => onSelect(c)} sx={{ cursor: 'pointer' }}>
+          <ListItemButton
+            key={c.id}
+            selected={c.id == selectedItemId}
+            onClick={() => onSelect(c)}
+            sx={{ cursor: 'pointer' }}
+          >
             <ListItemText
               primary={<Typography fontWeight="bold">{c.title}</Typography>}
-              secondary={<Typography color="gold">{c.reviewStatus}</Typography>}
+              secondary={<ReviewStatusChip reviewStatus={c.reviewStatus} />}
             />
-          </ListItem>
+          </ListItemButton>
         ))}
       </List>
-    </Box>
+    </Paper>
   );
 }

@@ -8,11 +8,11 @@ interface Props {
 export function ConversationReviewButtons({ onReviewStatusChange }: Props) {
   return (
     <Stack spacing={2} direction="row">
-      <Button variant="contained" onClick={() => onReviewStatusChange('Approved')}>
+      <Button variant="contained" color="success" onClick={() => onReviewStatusChange('Approved')}>
         Approve
       </Button>
 
-      <Button variant="contained" onClick={() => onReviewStatusChange('Needs Fix')}>
+      <Button variant="contained" color="error" onClick={() => onReviewStatusChange('Needs Fix')}>
         Needs Fix
       </Button>
     </Stack>
