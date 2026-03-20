@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
-import type { ConversationListItem, ConverstationReviewStatus } from './types';
+import type { ConversationListItem, ConversationNote, ConverstationReviewStatus } from './types';
 import { mockConversationItems } from './data/mockData';
 import Sidebar from './components/Sidebar';
 import { SelectedConversation } from './components/SelectedConversation';
@@ -13,11 +13,11 @@ function App() {
     setConversationList(mockConversationItems);
   }, []);
 
-  const updateReviewStatus = (reviewStatus: ConverstationReviewStatus) => {
+  function updateReviewStatus(reviewStatus: ConverstationReviewStatus) {
     if (!selectedConversation) return;
 
     setSelectedConversation({ ...selectedConversation, reviewStatus: reviewStatus });
-    
+
     setConversationList(
       conversationList.map((conv) => {
         if (conv.id == selectedConversation.id) {
@@ -27,7 +27,7 @@ function App() {
         return conv;
       })
     );
-  };
+  }
 
   return (
     <Box display="flex" height="100vh" color="white">

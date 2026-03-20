@@ -24,7 +24,8 @@ export const mockConversationDetails: ConversationDetails[] = [
     messages: [
       { id: 'm1', sender: 'Customer', content: 'Where is my order?', timestamp: Date.now() },
       { id: 'm2', sender: 'AI', content: 'It is on the way.', timestamp: Date.now() }
-    ]
+    ],
+    notes: []
   },
   {
     ...mockConversationItems[1],
@@ -32,6 +33,7 @@ export const mockConversationDetails: ConversationDetails[] = [
     messages: [
       { id: 'm1', sender: 'Customer', content: 'Test message from customer.', timestamp: Date.now() },
       { id: 'm2', sender: 'AI', content: 'Test message from AI.', timestamp: Date.now() }
-    ]
+    ],
+    notes: []
   }
 ];

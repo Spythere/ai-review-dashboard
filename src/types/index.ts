@@ -8,6 +8,11 @@ export interface ConversationMessage {
   timestamp: number;
 }
 
+export interface ConversationNote {
+  id: string;
+  text: string;
+}
+
 export interface ConversationListItem {
   id: string;
   title: string;
@@ -17,10 +22,6 @@ export interface ConversationListItem {
 
 export interface ConversationDetails extends ConversationListItem {
   messages: ConversationMessage[];
+  notes: ConversationNote[];
   category: string;
-}
-
-export interface ConversationNote {
-  id: string;
-  text: string;
 }

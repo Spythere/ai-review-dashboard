@@ -3,35 +3,39 @@ import type { ConversationNote } from '../types';
 
 interface Props {
   noteList: ConversationNote[];
-  noteInput: string;
-  error: string | null;
   setNoteInput: (v: string) => void;
-  onAdd: () => void;
+  noteInput: string;
+  onNoteAdd: () => void;
+  inputError: string | null;
 }
 
-export default function ConversationNotes({ noteList, noteInput, error, setNoteInput, onAdd }: Props) {
+export default function ConversationNotes({ noteList, onNoteAdd, noteInput, setNoteInput, inputError }: Props) {
   return (
     <Box>
-      <Typography variant="h6">Notes</Typography>
+      <Typography variant="h5">Internal Notes</Typography>
 
-      <TextField
-        fullWidth
-        value={noteInput}
-        onChange={(e) => setNoteInput(e.target.value)}
-        error={!!error}
-        helperText={error}
-        sx={{ my: 1, bgcolor: 'white' }}
-      />
+      <Box my={2}>
+        <TextField
+          fullWidth
+          value={noteInput}
+          onChange={(e) => setNoteInput(e.target.value)}
+          error={inputError != null}
+          helperText={inputError}
+          sx={{ bgcolor: 'white' }}
+        />
+      </Box>
 
-      <Button variant="contained" onClick={onAdd}>
+      <Box my={2}>
+        {noteList.map((n) => (
+          <Paper key={n.id} sx={{ p: 1, mt: 1 }}>
+            {n.text}
+          </Paper>
+        ))}
+      </Box>
+
+      <Button variant="contained" onClick={onNoteAdd}>
         Save
       </Button>
-
-      {noteList.map((n) => (
-        <Paper key={n.id} sx={{ p: 1, mt: 1 }}>
-          {n.text}
-        </Paper>
-      ))}
     </Box>
   );
 }

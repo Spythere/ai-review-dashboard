@@ -1,10 +1,11 @@
-import { Box, CircularProgress, Typography } from '@mui/material';
-import type { ConversationDetails, ConversationListItem, ConverstationReviewStatus } from '../types';
+import { Box, CircularProgress, Grid, Stack, Typography } from '@mui/material';
+import type { ConversationDetails, ConversationListItem, ConversationNote, ConverstationReviewStatus } from '../types';
 import { useEffect, useState } from 'react';
 import { mockConversationDetails } from '../data/mockData';
 import ConversationMessages from './ConversationMessages';
 import { ConversationHeader } from './ConversationHeader';
 import { ConversationReviewButtons } from './ConversationReviewButtons';
+import ConversationNotes from './ConversationNotes';
 
 interface Props {
   conversation: ConversationListItem;
@@ -17,9 +18,11 @@ export function SelectedConversation({ conversation, onReviewStatusChange }: Pro
   const [detailsLoading, setDetailsLoading] = useState(false);
   const [detailsError, setDetailsError] = useState<string | null>(null);
 
+  const [noteInput, setNoteInput] = useState('');
+  const [inputError, setInputError] = useState<string | null>(null);
+
   useEffect(() => {
     fetchConversationDetails();
-    console.log(conversation.id);
   }, [conversation.id]);
 
   // Mock fetching conversation details from API
@@ -43,6 +46,23 @@ export function SelectedConversation({ conversation, onReviewStatusChange }: Pro
     );
   }
 
+  function addNote() {
+    if (!conversationDetails) return;
+
+    if (noteInput.trim() == '') {
+      setInputError('Note cannot be empty!');
+      return;
+    }
+
+    const newNotes: ConversationNote[] = [...conversationDetails.notes, { id: Date.now().toString(), text: noteInput }];
+
+    setInputError(null);
+    setConversationDetails({
+      ...conversationDetails,
+      notes: newNotes
+    });
+  }
+
   return (
     <Box>
       <ConversationHeader conversation={conversation} />
@@ -51,10 +71,22 @@ export function SelectedConversation({ conversation, onReviewStatusChange }: Pro
       {detailsError && <Typography color="error">{detailsError}</Typography>}
 
       {conversationDetails && (
-        <Box>
-          <ConversationMessages messageList={conversationDetails.messages} />
-          <ConversationReviewButtons onReviewStatusChange={onReviewStatusChange} />
-        </Box>
+        <Grid container spacing={2} my={2}>
+          <Grid size={{ xs: 12, lg: 8 }}>
+            <ConversationMessages messageList={conversationDetails.messages} />
+            <ConversationReviewButtons onReviewStatusChange={onReviewStatusChange} />
+          </Grid>
+
+          <Grid size={{ xs: 12, lg: 4 }}>
+            <ConversationNotes
+              noteList={conversationDetails.notes}
+              onNoteAdd={addNote}
+              noteInput={noteInput}
+              setNoteInput={setNoteInput}
+              inputError={inputError}
+            />
+          </Grid>
+        </Grid>
       )}
     </Box>
   );

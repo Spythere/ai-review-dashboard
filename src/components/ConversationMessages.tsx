@@ -1,4 +1,4 @@
-import { Box, Paper } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import type { ConversationMessage } from '../types';
 
 interface Props {
@@ -8,6 +8,8 @@ interface Props {
 export default function ConversationMessages({ messageList }: Props) {
   return (
     <Box>
+      <Typography variant="h5">Conversation</Typography>
+      
       <Box my={2}>
         {messageList.map((m) => (
           <Paper key={m.id} sx={{ p: 2, my: 1 }}>
