@@ -1,9 +1,9 @@
 import { Box, Typography, List, ListItem, ListItemText } from '@mui/material';
-import type { ConversationListItem } from '../types';
+import type { Conversation } from '../types';
 
 interface Props {
-  conversationList: ConversationListItem[];
-  onSelect: (item: ConversationListItem) => void;
+  conversationList: Conversation[];
+  onSelect: (item: Conversation) => void;
 }
 
 export default function Sidebar({ conversationList, onSelect }: Props) {

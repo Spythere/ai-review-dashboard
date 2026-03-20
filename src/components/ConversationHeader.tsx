@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material';
-import type { ConversationListItem } from '../types';
+import type { Conversation } from '../types';
 
 interface Props {
-  conversation: ConversationListItem;
+  conversation: Conversation;
 }
 
 export function ConversationHeader({ conversation }: Props) {

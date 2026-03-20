@@ -16,6 +16,8 @@ export default function ConversationNotes({ noteList, onNoteAdd, noteInput, setN
 
       <Box my={2}>
         <TextField
+          label="Note content"
+          variant="outlined"
           fullWidth
           value={noteInput}
           onChange={(e) => setNoteInput(e.target.value)}

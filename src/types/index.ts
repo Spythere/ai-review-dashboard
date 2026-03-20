@@ -13,14 +13,11 @@ export interface ConversationNote {
   text: string;
 }
 
-export interface ConversationListItem {
+export interface Conversation {
   id: string;
   title: string;
   reviewStatus: ConverstationReviewStatus;
   lastUpdatedTimestamp: number;
-}
-
-export interface ConversationDetails extends ConversationListItem {
   messages: ConversationMessage[];
   notes: ConversationNote[];
   category: string;
