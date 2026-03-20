@@ -65,22 +65,18 @@ export function SelectedConversation({ conversation, onReviewStatusChange, onNot
       {detailsError && <Typography color="error">{detailsError}</Typography>}
 
       {
-        <Grid container spacing={2} my={2}>
-          <Grid size={{ xs: 12, lg: 8 }}>
-            <ConversationMessages messageList={conversation.messages} />
-            <ConversationReviewButtons onReviewStatusChange={onReviewStatusChange} />
-          </Grid>
+        <Box my={2}>
+          <ConversationMessages messageList={conversation.messages} />
+          <ConversationReviewButtons onReviewStatusChange={onReviewStatusChange} />
 
-          <Grid size={{ xs: 12, lg: 4 }}>
-            <ConversationNotes
-              noteList={conversation.notes}
-              onNoteAdd={addNote}
-              noteInput={noteInput}
-              setNoteInput={setNoteInput}
-              inputError={inputError}
-            />
-          </Grid>
-        </Grid>
+          <ConversationNotes
+            noteList={conversation.notes}
+            onNoteAdd={addNote}
+            noteInput={noteInput}
+            setNoteInput={setNoteInput}
+            inputError={inputError}
+          />
+        </Box>
       }
     </Box>
   );

@@ -1,4 +1,4 @@
-import { Box, Typography, List, ListItem, ListItemText } from '@mui/material';
+import { Box, Typography, List, ListItem, ListItemText, colors, Divider } from '@mui/material';
 import type { Conversation } from '../types';
 
 interface Props {
@@ -8,17 +8,14 @@ interface Props {
 
 export default function Sidebar({ conversationList, onSelect }: Props) {
   return (
-    <Box width={350} p={2} bgcolor="#2b2b2b" color="white">
+    <Box p={2} bgcolor={colors.grey[900]}>
       <Typography variant="h6">Conversations</Typography>
+      <Divider />
       <List>
         {conversationList.map((c) => (
           <ListItem key={c.id} onClick={() => onSelect(c)} sx={{ cursor: 'pointer' }}>
             <ListItemText
-              primary={
-                <Typography color="white" fontWeight="bold">
-                  {c.title}
-                </Typography>
-              }
+              primary={<Typography fontWeight="bold">{c.title}</Typography>}
               secondary={<Typography color="gold">{c.reviewStatus}</Typography>}
             />
           </ListItem>

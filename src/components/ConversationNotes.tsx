@@ -11,7 +11,7 @@ interface Props {
 
 export default function ConversationNotes({ noteList, onNoteAdd, noteInput, setNoteInput, inputError }: Props) {
   return (
-    <Box>
+    <Box my={2}>
       <Typography variant="h5">Internal Notes</Typography>
 
       <Box my={2}>
@@ -23,7 +23,6 @@ export default function ConversationNotes({ noteList, onNoteAdd, noteInput, setN
           onChange={(e) => setNoteInput(e.target.value)}
           error={inputError != null}
           helperText={inputError}
-          sx={{ bgcolor: 'white' }}
         />
       </Box>
 
