@@ -19,3 +19,8 @@ export interface ConversationDetails extends ConversationListItem {
   messages: ConversationMessage[];
   category: string;
 }
+
+export interface ConversationNote {
+  id: string;
+  text: string;
+}
