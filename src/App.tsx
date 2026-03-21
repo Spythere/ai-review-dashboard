@@ -73,7 +73,7 @@ function App() {
         <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
           <Toolbar variant="dense">
             <Typography variant="h6" color="inherit" component="div">
-              AI Conversation Dashboard
+              AI Conversation Review Dashboard
             </Typography>
           </Toolbar>
         </AppBar>
