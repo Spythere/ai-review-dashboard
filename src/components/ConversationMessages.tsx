@@ -5,6 +5,13 @@ interface Props {
   messageList: ConversationMessage[];
 }
 
+function humanizeTimestamp(timestamp: number) {
+  return new Date(timestamp).toLocaleString('en-US', {
+    dateStyle: 'short',
+    timeStyle: 'short'
+  });
+}
+
 export default function ConversationMessages({ messageList }: Props) {
   return (
     <Box>
@@ -14,15 +21,16 @@ export default function ConversationMessages({ messageList }: Props) {
         <Paper sx={{ p: 1 }}>
           {messageList.map((msg, i) => (
             <Box
+              mt={i == 0 ? 0 : 1}
               key={i}
               sx={{
                 display: 'flex',
                 justifyContent: msg.sender === 'Customer' ? 'flex-end' : 'flex-start'
               }}
             >
-              <Box>
+              <Box maxWidth="50%">
                 <Typography variant="body2" align={msg.sender === 'Customer' ? 'right' : 'left'}>
-                  {msg.sender}
+                  {msg.sender} &bull; {humanizeTimestamp(msg.timestamp)}
                 </Typography>
 
                 <Paper
