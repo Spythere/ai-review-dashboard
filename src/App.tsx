@@ -9,7 +9,8 @@ import {
   IconButton,
   ThemeProvider,
   Toolbar,
-  Typography
+  Typography,
+  useMediaQuery
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import type { Conversation, ConversationNote, ConverstationReviewStatus } from './types';
@@ -22,6 +23,8 @@ const darkTheme = createTheme({
     mode: 'dark'
   }
 });
+
+const drawerWidth = 320;
 
 function App() {
   const [conversationList, setConversationList] = useState<Conversation[]>([]);
@@ -69,8 +72,8 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
 
-      <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        <AppBar position="static">
+      <Box sx={{ minHeight: '100vh', display: 'flex' }}>
+        <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
           <Toolbar variant="dense">
             <Typography variant="h6" color="inherit" component="div">
               AI Conversation Dashboard
@@ -78,29 +81,35 @@ function App() {
           </Toolbar>
         </AppBar>
 
-        <Container sx={{ mt: 2, flexGrow: 1 }} maxWidth="xl">
-          <Grid container spacing={2}>
-            <Grid size={4}>
-              <Sidebar
-                conversationList={conversationList}
-                onSelect={setSelectedConversation}
-                selectedItemId={selectedConversation?.id || null}
-              />
-            </Grid>
+        <Sidebar
+          conversationList={conversationList}
+          onSelect={setSelectedConversation}
+          selectedItemId={selectedConversation?.id || null}
+          drawerWidth={drawerWidth}
+        />
 
-            <Grid size={8}>
-              {selectedConversation ? (
-                <SelectedConversation
-                  conversation={selectedConversation}
-                  onReviewStatusChange={updateReviewStatus}
-                  onNoteAdd={updateConversationNote}
-                />
-              ) : (
-                <Alert severity="info">Choose conversation to see its content.</Alert>
-              )}
-            </Grid>
-          </Grid>
-        </Container>
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            p: 3,
+            width: { sm: `calc(100% - ${drawerWidth}px)` }
+          }}
+        >
+          <Toolbar />
+
+          <Container maxWidth="xl">
+            {selectedConversation ? (
+              <SelectedConversation
+                conversation={selectedConversation}
+                onReviewStatusChange={updateReviewStatus}
+                onNoteAdd={updateConversationNote}
+              />
+            ) : (
+              <Alert severity="info">Choose conversation to see its content.</Alert>
+            )}
+          </Container>
+        </Box>
       </Box>
     </ThemeProvider>
   );
