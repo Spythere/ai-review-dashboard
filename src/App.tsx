@@ -5,12 +5,9 @@ import {
   Container,
   createTheme,
   CssBaseline,
-  Grid,
-  IconButton,
   ThemeProvider,
   Toolbar,
-  Typography,
-  useMediaQuery
+  Typography
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import type { Conversation, ConversationNote, ConverstationReviewStatus } from './types';

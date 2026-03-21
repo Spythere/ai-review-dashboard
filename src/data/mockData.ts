@@ -7,6 +7,7 @@ export const mockConversationItems: Conversation[] = [
     reviewStatus: 'Pending',
     lastUpdatedTimestamp: Date.now(),
     category: 'Finances',
+    city: 'Wrocław',
     messages: [
       { id: 'm1', sender: 'Customer', content: 'Where is my order?', timestamp: Date.now() },
       { id: 'm2', sender: 'AI', content: 'It is on the way.', timestamp: Date.now() },
@@ -27,6 +28,7 @@ export const mockConversationItems: Conversation[] = [
     reviewStatus: 'Needs Fix',
     lastUpdatedTimestamp: Date.now(),
     category: 'Test',
+    city: 'London',
     messages: [
       { id: 'm1', sender: 'Customer', content: 'Test message from customer.', timestamp: Date.now() },
       { id: 'm2', sender: 'AI', content: 'Test message from AI.', timestamp: Date.now() }

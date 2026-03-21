@@ -35,9 +35,11 @@ export default function Sidebar({ conversationList, onSelect, selectedItemId, dr
       }}
     >
       <Toolbar />
-      <Typography variant="h6" p={2}>
+
+      <Typography variant="h5" p={2}>
         Conversations
       </Typography>
+
       <Box sx={{ overflow: 'auto' }}>
         <List>
           {conversationList.map((c) => (

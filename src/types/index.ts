@@ -21,4 +21,5 @@ export interface Conversation {
   messages: ConversationMessage[];
   notes: ConversationNote[];
   category: string;
+  city: string;
 }

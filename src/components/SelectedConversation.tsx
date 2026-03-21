@@ -13,36 +13,8 @@ interface Props {
 }
 
 export function SelectedConversation({ conversation, onReviewStatusChange, onNoteAdd }: Props) {
-  const [detailsLoading, setDetailsLoading] = useState(false);
-  const [detailsError, setDetailsError] = useState<string | null>(null);
-
   const [noteInput, setNoteInput] = useState('');
   const [inputError, setInputError] = useState<string | null>(null);
-
-  // useEffect(() => {
-  //   fetchConversationDetails();
-  // }, [conversation.id]);
-
-  // Mock fetching conversation details from API
-  // function fetchConversationDetails() {
-  //   setDetailsLoading(true);
-  //   setConversationDetails(null);
-  //   setDetailsError(null);
-
-  //   setTimeout(
-  //     () => {
-  //       try {
-  //         const details = mockConversationDetails.find((c) => c.id == conversation.id);
-  //         setConversationDetails(details || null);
-  //       } catch (error) {
-  //         setDetailsError('Failed to load conversation details');
-  //       } finally {
-  //         setDetailsLoading(false);
-  //       }
-  //     },
-  //     Math.random() * 200 + 100
-  //   );
-  // }
 
   function addNote() {
     if (!conversation) return;
@@ -60,9 +32,6 @@ export function SelectedConversation({ conversation, onReviewStatusChange, onNot
   return (
     <Box>
       <ConversationHeader conversation={conversation} />
-
-      {detailsLoading && <CircularProgress size={20} />}
-      {detailsError && <Typography color="error">{detailsError}</Typography>}
 
       {
         <Box my={2}>
