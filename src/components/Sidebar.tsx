@@ -1,16 +1,4 @@
-import {
-  Box,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  colors,
-  Divider,
-  ListItemButton,
-  Paper,
-  Drawer,
-  Toolbar
-} from '@mui/material';
+import { Box, Typography, List, ListItemText, ListItemButton, Drawer, Toolbar } from '@mui/material';
 import type { Conversation } from '../types';
 import { ReviewStatusChip } from './ReviewStatusChip';
 

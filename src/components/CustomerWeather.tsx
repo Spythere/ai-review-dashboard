@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Skeleton, Typography } from '@mui/material';
+import { Box, Skeleton, Typography } from '@mui/material';
 import axios from 'axios';
 import type { LoadingState, LocationDataAPI, WeatherDataAPI } from '../types/api';
 import { useEffect, useState } from 'react';
