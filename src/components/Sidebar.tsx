@@ -23,10 +23,8 @@ export default function Sidebar({ conversationList, onSelect, selectedItemId }: 
             onClick={() => onSelect(c)}
             sx={{ cursor: 'pointer' }}
           >
-            <ListItemText
-              primary={<Typography fontWeight="bold">{c.title}</Typography>}
-              secondary={<ReviewStatusChip reviewStatus={c.reviewStatus} />}
-            />
+            <ListItemText primary={<Typography fontWeight="bold">{c.title}</Typography>} />
+            <ReviewStatusChip reviewStatus={c.reviewStatus} />
           </ListItemButton>
         ))}
       </List>

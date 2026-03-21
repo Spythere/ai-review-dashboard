@@ -26,6 +26,10 @@ export default function ConversationNotes({ noteList, onNoteAdd, noteInput, setN
         />
       </Box>
 
+      <Button variant="contained" onClick={onNoteAdd}>
+        Save
+      </Button>
+
       <Box my={2}>
         {noteList.map((n) => (
           <Paper key={n.id} sx={{ p: 1, mt: 1 }}>
@@ -33,10 +37,6 @@ export default function ConversationNotes({ noteList, onNoteAdd, noteInput, setN
           </Paper>
         ))}
       </Box>
-
-      <Button variant="contained" onClick={onNoteAdd}>
-        Save
-      </Button>
     </Box>
   );
 }
